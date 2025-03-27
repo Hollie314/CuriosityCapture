@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
+  m_Name: Curiosity_Data
+  m_EditorClassIdentifier: 
+  <Curiosity_name>k__BackingField: 
+  <Curiosity_description>k__BackingField: 
+  <Apparition_priority>k__BackingField: 0
+  <Speed>k__BackingField: 0
+  <MaxCapturePoint>k__BackingField: 0
+  <CaptureSpeed>k__BackingField: 0
+  <UncaptureSpeed>k__BackingField: 0
+  <CaptureBehaviors>k__BackingField:
+  - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
+  <Avatar>k__BackingField: {fileID: 3380698253631369519, guid: ea4ea0393e92860428c6387d030bd8a6, type: 3}
