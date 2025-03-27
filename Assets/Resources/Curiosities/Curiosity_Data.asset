@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
   m_Name: Curiosity_Data
   m_EditorClassIdentifier: 
-  <curiosity_name>k__BackingField: hahahahaha
-  <curiosity_description>k__BackingField: "ceci est le petit hihi ou aussi appell\xE9
-    petit haha"
-  <apparition_priority>k__BackingField: 0
-  <speed>k__BackingField: 0
-  <captureBehaviors>k__BackingField:
-  - {fileID: 11400000, guid: 92b5727eca0805241baec0660e8d443b, type: 2}
+  <Curiosity_name>k__BackingField: 
+  <Curiosity_description>k__BackingField: 
+  <Apparition_priority>k__BackingField: 0
+  <Speed>k__BackingField: 0
+  <MaxCapturePoint>k__BackingField: 0
+  <CaptureSpeed>k__BackingField: 0
+  <UncaptureSpeed>k__BackingField: 0
+  <CaptureBehaviors>k__BackingField:
+  - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
   <Avatar>k__BackingField: {fileID: 3380698253631369519, guid: ea4ea0393e92860428c6387d030bd8a6, type: 3}

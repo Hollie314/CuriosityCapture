@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce20832bab9ca94f974fbe98351023b, type: 3}
   m_Name: hard
   m_EditorClassIdentifier: 
-  <TimeBeforeTriggerBehavior>k__BackingField: 0
-  <Dash_speed>k__BackingField: 0
-  <TimeBeforeResetSpeed>k__BackingField: 0
+  <TimeBeforeTriggerBehavior>k__BackingField: 2
+  <Dash_speed>k__BackingField: 5
+  <TimeBeforeResetSpeed>k__BackingField: 4
