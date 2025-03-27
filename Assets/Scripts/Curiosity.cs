@@ -6,28 +6,24 @@ using UnityEngine.Splines;
 public class Curiosity : MonoBehaviour
 {
 
+    //Movement
     [SerializeField] private float normal_speed;
     [SerializeField] private float dash_speed;
     [SerializeField] private float current_speed;
 
     [SerializeField] private float timeBeforeReverse;
-    
     [SerializeField] private float timeBeforeDash;
-    
+    [SerializeField] private float timeBeforeTrigger;
     [SerializeField] private float timeBeforeSlowDown = 2;
     
-    private float timeBeforeTrigger;
-    
-    private string  curiosity_name;
-    private bool facingRight;
-
-
-    private int maxCapturePoint;
-    private int currentCapturePoint;
-    
     [SerializeField] public SplineContainer splinecontainer;
+    private bool facingRight;
     float distancePercentage = 0f;
     private bool isReversed = false;
+    
+    //Capture
+    private int maxCapturePoint;
+    private int currentCapturePoint;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
