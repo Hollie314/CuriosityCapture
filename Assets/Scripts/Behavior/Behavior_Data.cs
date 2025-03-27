@@ -1,7 +1,13 @@
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Behavior_Data", menuName = "Scriptable Objects/Behavior_Data")]
-public abstract class Behavior_Data : ScriptableObject
-{
-    public abstract void CaptureBehavior(Curiosity creature);
-}
+[CreateAssetMenu(fileName = "Curiosity_Data", menuName = "Scriptable Objects/Curiosity_Data")]
+ [Serializable]
+    public abstract class Behavior : ScriptableObject
+    {
+        [field: SerializeField]
+        public float TimeBeforeTriggerBehavior { get; private set; }
+        public float CurrentTime { get; set; }
+        public abstract void CaptureBehavior(Curiosity creature, float time);
+    }
+

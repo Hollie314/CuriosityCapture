@@ -1,11 +1,17 @@
+using System;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "ChangeDirection_Data", menuName = "CaptureBehaviors/ChangeDirection_Data")]
-public class ChangeDirection_Data : Behavior_Data
+[CreateAssetMenu(fileName = "ChangeDirection_Data", menuName = "Behavior/ChangeDirection_Data")]
+[Serializable]
+public class ChangeDirection_Data : Behavior
 {
-    public override void CaptureBehavior(Curiosity creature)
+    public override void CaptureBehavior(Curiosity creature, float time)
     {
-        creature.OnchangeDirection();
+        CurrentTime += time;
+        if (CurrentTime >= TimeBeforeTriggerBehavior)
+        {
+            creature.OnchangeDirection();
+            CurrentTime = 0;
+        }
     }
 }

@@ -7,47 +7,66 @@ public class Curiosity : MonoBehaviour
 {
 
     //Movement
-    [SerializeField] private float normal_speed;
-    [SerializeField] private float dash_speed;
-    [SerializeField] private float current_speed;
+    private float normal_speed;
+    private float current_speed;
+    
+    [SerializeField] private SplineContainer splinecontainer;
+    private bool facingRight;
+    private float distancePercentage = 0f;
+    private bool isReversed = false;
 
-    [SerializeField] private float timeBeforeReverse;
-    [SerializeField] private float timeBeforeDash;
-    [SerializeField] private float timeBeforeTrigger;
+
     [SerializeField] private float timeBeforeSlowDown = 2;
     
-    [SerializeField] public SplineContainer splinecontainer;
-    private bool facingRight;
-    float distancePercentage = 0f;
-    private bool isReversed = false;
-    
     //Capture
-    private int maxCapturePoint;
-    private int currentCapturePoint;
+    private float maxCapturePoint;
+    private float currentCapturePoint =0;
+    private float captureSpeed;
+    private float uncaptureSpeed;
+
+    public bool isBeeingCaptured = false;
+    
+    private 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        current_speed = normal_speed;
-        
-        //splineAnimate.MaxSpeed = normal_speed;
-        if (timeBeforeDash > 0)
-        {
-            StartCoroutine(SpeedUp());
-        }
-
-        if (timeBeforeReverse > 0)
-        {
-            StartCoroutine(ChangeDirection());
-        }
+       
     }
 
+    public void Instantiate(float normal_speed, float maxCapturePoint, float captureSpeed, float uncaptureSpeed)
+    {
+        this.normal_speed = normal_speed;
+        current_speed = this.normal_speed;
+        this.maxCapturePoint = maxCapturePoint;
+        this.captureSpeed = captureSpeed;
+        this.uncaptureSpeed = uncaptureSpeed;
+    }
+    
     // Update is called once per frame
     void Update()
     {
         MoveAlongSpline();
+
+        if (currentCapturePoint > 0)
+        {
+            if (isBeeingCaptured)
+            {
+                currentCapturePoint += Time.deltaTime * captureSpeed;
+            }
+            else
+            {
+                currentCapturePoint -= Time.deltaTime * uncaptureSpeed;
+            }
+
+            if (currentCapturePoint >= maxCapturePoint)
+            {
+                
+            }
+        }
     }
 
+    
     private void MoveAlongSpline()
     {
         
@@ -89,26 +108,6 @@ public class Curiosity : MonoBehaviour
         }
     }
     
-    IEnumerator SpeedUp()
-    {
-        yield return new WaitForSeconds(timeBeforeDash);
-        current_speed = dash_speed;
-        yield return StartCoroutine(SlowDown());
-        StartCoroutine(SpeedUp());
-    }
-    
-    IEnumerator SlowDown()
-    {
-        yield return new WaitForSeconds(timeBeforeSlowDown);
-        current_speed = normal_speed;
-    }
-    
-    IEnumerator ChangeDirection()
-    {
-        yield return new WaitForSeconds(timeBeforeReverse);
-        OnchangeDirection();
-        StartCoroutine(ChangeDirection());
-    }
 
     public void OnchangeDirection()
     {
@@ -125,10 +124,17 @@ public class Curiosity : MonoBehaviour
         // distancePercentage = isReversed ? 1f - distancePercentage : distancePercentage;
     }
 
-    public void OnSpeedUp()
+    public void OnSpeedUp(float dash_speed, float time_before_slow_down)
     {
+        timeBeforeSlowDown = time_before_slow_down;
         current_speed = dash_speed;
         StartCoroutine(SlowDown());
+    }
+    
+    IEnumerator SlowDown()
+    {
+        yield return new WaitForSeconds(timeBeforeSlowDown);
+        current_speed = normal_speed;
     }
 
     private void Flip()
@@ -137,5 +143,20 @@ public class Curiosity : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
         facingRight = !facingRight;
+    }
+
+    public void Capture()
+    {
+        isBeeingCaptured = true;
+    }
+    
+    public void UnCapture()
+    {
+        isBeeingCaptured = false;
+    }
+
+    public float CapturePercent()
+    {
+        return (currentCapturePoint/maxCapturePoint) *100;
     }
 }

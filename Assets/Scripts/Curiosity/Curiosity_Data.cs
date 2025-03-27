@@ -6,33 +6,40 @@ using UnityEngine;
 public class Curiosity_Data : ScriptableObject
 {
     [field: SerializeField]
-    public String curiosity_name { get; private set; }
+    public String Curiosity_name { get; private set; }
     
     [field: SerializeField]
-    public String curiosity_description { get; private set; }
+    public String Curiosity_description { get; private set; }
     
     [field: SerializeField]
-    public int apparition_priority { get; private set; }
+    public int Apparition_priority { get; private set; }
     
     [field: SerializeField]
-    public float speed { get; private set; }
+    public float Speed { get; private set;}
     
     [field: SerializeField]
-    public float timeBeforeTriggerBehavior { get; private set; }
+    public int MaxCapturePoint { get; private set;}
     
     [field: SerializeField]
-    public List<Behavior_Data> captureBehaviors { get; private set; }
+    public float CaptureSpeed { get; private set;}
+    
+    [field: SerializeField]
+    public float UncaptureSpeed { get; private set; }
+    
+    
+    [field: SerializeReference] 
+    public List<Behavior> CaptureBehaviors { get; private set; }
     
     [field: SerializeField]
     public GameObject Avatar { get; private set; }
     
-    public void TriggerBehavior(Curiosity creature)
+    public void TriggerBehavior(Curiosity creature, float time)
     {
-        if (captureBehaviors != null)
+        if (CaptureBehaviors != null)
         {
-            foreach (var captureBehavior in captureBehaviors)
+            foreach (var captureBehavior in CaptureBehaviors)
             {
-                captureBehavior.CaptureBehavior(creature);
+                captureBehavior.CaptureBehavior(creature, time);
             }
         }
         else

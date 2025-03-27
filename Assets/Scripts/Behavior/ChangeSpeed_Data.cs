@@ -1,11 +1,22 @@
+using System;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "ChangeSpeed_Data", menuName = "CaptureBehaviors/ChangeSpeed_Data")]
-public class ChangeSpeed_Data : Behavior_Data
+[CreateAssetMenu(fileName = "ChangeSpeed_Data", menuName = "Behavior/ChangeSpeed_Data")]
+[Serializable]
+public class ChangeSpeed_Data : Behavior
 {
-    public override void CaptureBehavior(Curiosity creature)
+    [field: SerializeField]
+    public float Dash_speed { get; private set; }
+    [field: SerializeField]
+    public float TimeBeforeResetSpeed { get; private set; }
+    
+    public override void CaptureBehavior(Curiosity creature, float time)
     {
-        creature.OnSpeedUp();
+        CurrentTime += time;
+        if (CurrentTime >= TimeBeforeTriggerBehavior)
+        {
+            creature.OnSpeedUp(Dash_speed, TimeBeforeResetSpeed);
+            CurrentTime = 0;
+        }
     }
 }
