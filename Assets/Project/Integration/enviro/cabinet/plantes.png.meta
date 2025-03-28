@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 20701ea52b754d54996ee4c24ee401a9
+guid: 1eec7a5e4cf50a0498a93d8900f23a2e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -807705764355871472
-    second: sirene_0
+      213: 3814606029645186823
+    second: plantes_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -77,7 +77,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sirene_0
+      name: plantes_0
       rect:
         serializedVersion: 2
-        x: 1185
-        y: 466
-        width: 512
-        height: 412
+        x: 1017
+        y: 281
+        width: 191
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01d688003e37ac4f0800000000000000
-      internalID: -807705764355871472
+      spriteID: 707801b29f330f430800000000000000
+      internalID: 3814606029645186823
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      sirene_0: -807705764355871472
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
