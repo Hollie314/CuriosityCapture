@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         //for singleton behavior_end
+        curiositie_datas = new List<Curiosity_Data>();
         curiositie_datas = GameController.GameDatabase.Curiosity_Data.ToList();
     }
     
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         curiosities = new Dictionary<Curiosity,Curiosity_Data >();
+        capturedCuriosities = new List<Curiosity_Data>();
         InstantiateCuriosity();
     }
 
@@ -84,43 +86,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CaptureBegin(GameObject creatureGO)
+    public void CaptureBegin(Curiosity curiosity)
     {
-        // Try to get the Curiosity component
-        Curiosity curiosityComponent = creatureGO.GetComponent<Curiosity>();
-
-        // Check if the component exists
-        if (curiosityComponent != null)
-        {
-            // Call Capture if the component exists
-            curiosityComponent.Capture();
-        }
-        else
-        {
-            // Log an error if the component is missing
-            Debug.LogError("There is no Curiosity component attached to " + creatureGO.name);
-        }
-        
-       
+        // Call Capture if the component exists
+        curiosity.Capture();
         
     }
     
-    public void CaptureEnd(GameObject creatureGO)
+    public void CaptureEnd(Curiosity curiosity)
     {
-        if (creatureGO.GetComponent<Curiosity>()!=null)
+        curiosity.UnCapture();
+        foreach (var behavior in  curiosities[curiosity].CaptureBehaviors)
         {
-            creatureGO.GetComponent<Curiosity>().UnCapture();
-            foreach (var behavior in  curiosities[creatureGO.GetComponent<Curiosity>()].CaptureBehaviors)
-            {
-                behavior.ResetTime();
-            }
+            behavior.ResetTime();
         }
-        else
-        {
-            Debug.Log("there is an issue wtf");
-        }
-
-        
     }
 
     private void NextSpawn()
@@ -151,11 +130,16 @@ public class GameManager : MonoBehaviour
     public void Capture(Curiosity curiosity)
     {
         Debug.Log("it is captured !");
-    //    capturedCuriosities.Add(curiosities[curiosity]);
+        Curiosity_Data curiosityData;
+        bool data = curiosities.TryGetValue(curiosity, out curiosityData);
+        if (curiosityData != null)
+        {
+           Debug.Log("yes");
+            capturedCuriosities.Add(curiosityData);
+        }
         OnCapture?.Invoke(curiosities[curiosity]);
-        curiosities.Remove(curiosity);
-        
         curiosity.gameObject.SetActive(false);
+        curiosities.Remove(curiosity);
         NextSpawn();
     }
 }

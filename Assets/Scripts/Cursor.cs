@@ -17,7 +17,15 @@ public class Cursor : MonoBehaviour
     {
         if (other.CompareTag("Curiosity"))
         {
-            GameManager.GetInstance().CaptureBegin(other.GetComponent<GameObject>());
+            GameManager.GetInstance().CaptureBegin(other.GetComponent<Curiosity>());
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Curiosity"))
+        {
+            GameManager.GetInstance().CaptureEnd(other.GetComponent<Curiosity>());
         }
     }
     
