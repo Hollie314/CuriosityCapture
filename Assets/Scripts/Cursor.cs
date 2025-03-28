@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
@@ -11,4 +12,13 @@ public class Cursor : MonoBehaviour
             // Move object to mouse position
             transform.position = mousePos;
         }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Curiosity"))
+        {
+            GameManager.GetInstance().CaptureBegin(other.GetComponent<GameObject>());
+        }
+    }
+    
 }

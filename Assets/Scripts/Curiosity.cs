@@ -28,6 +28,7 @@ public class Curiosity : MonoBehaviour
     private float uncaptureSpeed;
 
     public bool isBeeingCaptured = false;
+    private bool isCaptured = false;
 
     [field:SerializeField]private UI_Capture _uiCapture;
     
@@ -64,9 +65,11 @@ public class Curiosity : MonoBehaviour
         if (isBeeingCaptured)
         {
             currentCapturePoint += Time.deltaTime * captureSpeed;
-            if (currentCapturePoint >= maxCapturePoint)
+            if (currentCapturePoint >= maxCapturePoint && !isCaptured)
             {
-                //capture the curiosity
+                isCaptured = true;
+                GameManager.Instance.Capture(this);
+                Destroy(this);
             }
             _uiCapture.UpdateCaptureBar(CapturePercent());
             //GameManager.Instance.CaptureUpdate(this);
@@ -81,7 +84,6 @@ public class Curiosity : MonoBehaviour
     
     private void MoveAlongSpline()
     {
-        Debug.Log("we are moving");
         // Calculate the target position on the spline
             Vector3 targetPosition = splinecontainer.EvaluatePosition(distancePercentage);
 
@@ -122,9 +124,9 @@ public class Curiosity : MonoBehaviour
 
     private void Flip()
     {
-        Vector3 currentScale = gameObject.transform.localScale;
+        Vector3 currentScale = this.transform.GetChild(0).transform.localScale;
         currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
+        this.transform.GetChild(0).transform.localScale = currentScale;
         facingRight = !facingRight;
     }
     
@@ -169,5 +171,10 @@ public class Curiosity : MonoBehaviour
     public float CapturePercent()
     {
         return (currentCapturePoint/maxCapturePoint);
+    }
+
+    public void DestroySpline()
+    {
+        //Destroy(this.splineObject);
     }
 }

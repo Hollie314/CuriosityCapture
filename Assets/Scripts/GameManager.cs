@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +10,16 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     //curiosities
-    private Curiosity_Data[] curiositie_datas;
+    private List<Curiosity_Data> curiositie_datas;
     private int index_currentCuriosity = 0;
-    private Dictionary<Curiosity,Curiosity_Data > curiosities;
+    [SerializeField]private Dictionary<Curiosity,Curiosity_Data > curiosities;
     
     //spawning
     public event Action<Curiosity_Data> OnCapture;
     [SerializeField] GameObject[] spawnLocations;
+    
+    //player
+    private List<Curiosity_Data> capturedCuriosities;
     
     
     protected void Awake()
@@ -30,8 +34,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         //for singleton behavior_end
-        
-        curiositie_datas = GameController.GameDatabase.Curiosity_Data;
+        curiositie_datas = GameController.GameDatabase.Curiosity_Data.ToList();
     }
     
     // for singleton Ensures it's created automatically if accessed before existing
@@ -74,26 +77,85 @@ public class GameManager : MonoBehaviour
                 script.Initialize(curiosity.Speed, curiosity.MaxCapturePoint, curiosity.CaptureSpeed, curiosity.UncaptureSpeed, curiosity.splineObject);
             }
         }
+
+        foreach (var curiosity in curiosities)
+        {
+            curiositie_datas.Remove(curiosity.Value);
+        }
     }
 
     public void CaptureBegin(GameObject creatureGO)
     {
-        Curiosity curiosity = creatureGO.GetComponent<Curiosity>();
-        curiosity.Capture();
+        // Try to get the Curiosity component
+        Curiosity curiosityComponent = creatureGO.GetComponent<Curiosity>();
+
+        // Check if the component exists
+        if (curiosityComponent != null)
+        {
+            // Call Capture if the component exists
+            curiosityComponent.Capture();
+        }
+        else
+        {
+            // Log an error if the component is missing
+            Debug.LogError("There is no Curiosity component attached to " + creatureGO.name);
+        }
+        
+       
+        
     }
     
     public void CaptureEnd(GameObject creatureGO)
     {
-        Curiosity curiosity = creatureGO.GetComponent<Curiosity>();
-        curiosity.UnCapture();
-        foreach (var behavior in  curiosities[curiosity].CaptureBehaviors)
+        if (creatureGO.GetComponent<Curiosity>()!=null)
         {
-            behavior.ResetTime();
+            creatureGO.GetComponent<Curiosity>().UnCapture();
+            foreach (var behavior in  curiosities[creatureGO.GetComponent<Curiosity>()].CaptureBehaviors)
+            {
+                behavior.ResetTime();
+            }
+        }
+        else
+        {
+            Debug.Log("there is an issue wtf");
+        }
+
+        
+    }
+
+    private void NextSpawn()
+    {
+        if (curiosities.Count == 0)
+        {
+            if (curiositie_datas.Count == 0)
+            {
+                EndGame();
+            }
+            else
+            {
+                index_currentCuriosity++;
+                InstantiateCuriosity();
+                if (curiosities.Count == 0)
+                {
+                    NextSpawn();
+                }
+            }
         }
     }
 
+    public void EndGame()
+    {
+        Debug.Log("end game");
+        //to implement
+    }
     public void Capture(Curiosity curiosity)
     {
-        OnCapture?.Invoke(curiosities[curiosity]);;
+        Debug.Log("it is captured !");
+    //    capturedCuriosities.Add(curiosities[curiosity]);
+        OnCapture?.Invoke(curiosities[curiosity]);
+        curiosities.Remove(curiosity);
+        
+        curiosity.gameObject.SetActive(false);
+        NextSpawn();
     }
 }
