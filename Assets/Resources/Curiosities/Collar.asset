@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
   m_Name: Collar
   m_EditorClassIdentifier: 
-  <Curiosity_name>k__BackingField: Mad Hatter's Hat
-  <Curiosity_description>k__BackingField: 'This peculiar, twisted, and worn top hat
-    is said to belong to the Mad Hatter. It seems to harbor the secrets of forgotten
-    tea parties, moving stealthily and vanishing the moment a ray of light touches
-    it. '
+  <Curiosity_name>k__BackingField: Jumbo
+  <Curiosity_description>k__BackingField: "This ancient collar, worn and rusted by
+    time, rests in a glass box. It is said to belong to Jumbo, a mythological dog
+    from folklore \u2014 a guardian of forgotten mysteries. Its jingling echoes through
+    the dark halls, accompanied by a fleeting silhouette slipping through the shadows,
+    always out of reach of the light. "
+  <Curiosity_icone>k__BackingField: {fileID: 0}
   <Apparition_priority>k__BackingField: 0
   <Spawn_Location_Index>k__BackingField: 0
   <splineObject>k__BackingField: {fileID: 480959247455701298, guid: ca3cde3019e4f6d4cb996c8731e41681, type: 3}

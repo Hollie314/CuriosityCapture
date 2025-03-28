@@ -17,11 +17,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]private Dictionary<Curiosity,Curiosity_Data > curiosities;
     
     //spawning
-    public static event Action<int> OnCapture;
     [SerializeField] GameObject[] spawnLocations;
     
     //player
     private List<Curiosity_Data> capturedCuriosities;
+    
+    //event
+    public static event Action<int> OnCapture;
+    public static event Action OnEndGame;
     
     
     protected void Awake()
