@@ -23,9 +23,10 @@ MonoBehaviour:
   <Spawn_Location_Index>k__BackingField: 0
   <splineObject>k__BackingField: {fileID: 480959247455701298, guid: ca3cde3019e4f6d4cb996c8731e41681, type: 3}
   <Speed>k__BackingField: 2
-  <MaxCapturePoint>k__BackingField: 50
-  <CaptureSpeed>k__BackingField: 5
-  <UncaptureSpeed>k__BackingField: 4
+  <MaxCapturePoint>k__BackingField: 100
+  <CaptureSpeed>k__BackingField: 10
+  <UncaptureSpeed>k__BackingField: 5
   <CaptureBehaviors>k__BackingField:
-  - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
+  - {fileID: 11400000, guid: f992e504adc3b2141be230604342d711, type: 2}
+  - {fileID: 11400000, guid: 864686b919540fb4789b87483952c3b9, type: 2}
   <Avatar>k__BackingField: {fileID: 7610894136921100387, guid: 94bbc4a4678a1894e94c8a79e760a749, type: 3}
