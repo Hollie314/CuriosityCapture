@@ -17,13 +17,13 @@ MonoBehaviour:
     is said to belong to the Mad Hatter. It seems to harbor the secrets of forgotten
     tea parties, moving stealthily and vanishing the moment a ray of light touches
     it. '
-  <Apparition_priority>k__BackingField: 0
+  <Apparition_priority>k__BackingField: 1
   <Spawn_Location_Index>k__BackingField: 0
-  <splineObject>k__BackingField: {fileID: 7232155228854673200, guid: fc9aa51bf701ecd4388a0e5e85f7bb14, type: 3}
+  <splineObject>k__BackingField: {fileID: 7941904565004377457, guid: 00cce6ff2fae1da4f9ff7724f22b67cd, type: 3}
   <Speed>k__BackingField: 2
   <MaxCapturePoint>k__BackingField: 50
   <CaptureSpeed>k__BackingField: 5
   <UncaptureSpeed>k__BackingField: 4
   <CaptureBehaviors>k__BackingField:
   - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
-  <Avatar>k__BackingField: {fileID: 8732672663073354428, guid: 54ba3e5d80439e24a9bd2fbf6d89dd3d, type: 3}
+  <Avatar>k__BackingField: {fileID: 2655957798704671369, guid: ecc0b948db0323140b513d3667573504, type: 3}

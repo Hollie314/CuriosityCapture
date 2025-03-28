@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Book : MonoBehaviour
 {
@@ -24,10 +25,14 @@ public class UI_Book : MonoBehaviour
         curiosity_tamponUI[index].SetActive(true);
     }
 
-    public void InitUIdata(int index, Curiosity_Data data)
+    public void InitUIdata(Curiosity_Data[] data)
     {
-        //curiosity_tamponUI[index].transform.Find()
-        curiosity_tamponUI[index].GetComponentInChildren<TextMeshPro>().text = data.Curiosity_description;
+        for (int i=0; i < data.Length; i++)
+        {
+            curiosity_tamponUI[i].transform.Find("titre").GetComponent<TextMeshPro>().text = data[i].Curiosity_name;
+            curiosity_tamponUI[i].transform.Find("description").GetComponent<TextMeshPro>().text = data[i].Curiosity_description;
+            curiosity_tamponUI[i].transform.Find("icone").GetComponent<Image>().sprite = data[i].Curiosity_icone;
+        }
     }
 
     public void ToogleUI()
