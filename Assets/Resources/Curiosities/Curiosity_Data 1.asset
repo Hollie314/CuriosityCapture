@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
-  m_Name: Curiosity_Data
+  m_Name: Curiosity_Data 1
   m_EditorClassIdentifier: 
   <Curiosity_name>k__BackingField: 
   <Curiosity_description>k__BackingField: 
-  <Apparition_priority>k__BackingField: 0
+  <Apparition_priority>k__BackingField: 1
   <Spawn_Location_Index>k__BackingField: 0
   <splineObject>k__BackingField: {fileID: 7232155228854673200, guid: fc9aa51bf701ecd4388a0e5e85f7bb14, type: 3}
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 5
   <MaxCapturePoint>k__BackingField: 50
-  <CaptureSpeed>k__BackingField: 5
-  <UncaptureSpeed>k__BackingField: 4
+  <CaptureSpeed>k__BackingField: 10
+  <UncaptureSpeed>k__BackingField: 5
   <CaptureBehaviors>k__BackingField:
-  - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
+  - {fileID: 11400000, guid: f992e504adc3b2141be230604342d711, type: 2}
   <Avatar>k__BackingField: {fileID: 8732672663073354428, guid: 54ba3e5d80439e24a9bd2fbf6d89dd3d, type: 3}

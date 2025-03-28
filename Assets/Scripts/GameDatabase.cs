@@ -7,6 +7,6 @@ public class GameDatabase
     
     public GameDatabase()
     {
-        Curiosity_Data = Resources.LoadAll<Curiosity_Data>("Curiosity_Data");
+        Curiosity_Data = Resources.LoadAll<Curiosity_Data>("Curiosities");
     }
 }

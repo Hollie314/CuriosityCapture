@@ -9,5 +9,10 @@ using UnityEngine;
         public float TimeBeforeTriggerBehavior { get; private set; }
         public float CurrentTime { get; set; }
         public abstract void CaptureBehavior(Curiosity creature, float time);
+
+        public void ResetTime()
+        {
+            CurrentTime = 0;
+        }
     }
 

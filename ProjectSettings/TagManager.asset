@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wanderable
+  - Curiosity
   layers:
   - Default
   - TransparentFX
@@ -39,8 +40,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Sprite_back
+    uniqueID: 1528912747
+    locked: 0
+  - name: creature
+    uniqueID: 3660554791
+    locked: 0
+  - name: Sprite_front
+    uniqueID: 3514483067
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 4049606817
     locked: 0
   m_RenderingLayers:
   - Default

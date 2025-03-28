@@ -1,7 +1,9 @@
 using System.Collections;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.UI;
 
 public class Curiosity : MonoBehaviour
 {
@@ -9,14 +11,15 @@ public class Curiosity : MonoBehaviour
     //Movement
     private float normal_speed;
     private float current_speed;
-    
-    [SerializeField] private SplineContainer splinecontainer;
+
+    private GameObject splineObject;
+    private SplineContainer splinecontainer;
     private bool facingRight;
     private float distancePercentage = 0f;
     private bool isReversed = false;
 
 
-    [SerializeField] private float timeBeforeSlowDown = 2;
+    private float timeBeforeSlowDown = 2;
     
     //Capture
     private float maxCapturePoint;
@@ -25,51 +28,62 @@ public class Curiosity : MonoBehaviour
     private float uncaptureSpeed;
 
     public bool isBeeingCaptured = false;
-    
-    private 
+    private bool isCaptured = false;
+
+    [field:SerializeField]private UI_Capture _uiCapture;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        //Instantiate the spline 
+        GameObject spline = Instantiate(this.splineObject,this.transform.parent);
+        splinecontainer = spline.GetComponent<SplineContainer>();
+        // Teleport to start
+        Vector3 startPos = splinecontainer.EvaluatePosition(0);
+        transform.position = startPos; 
     }
 
-    public void Instantiate(float normal_speed, float maxCapturePoint, float captureSpeed, float uncaptureSpeed)
+    public void Initialize(float normal_speed, float maxCapturePoint, float captureSpeed, float uncaptureSpeed, GameObject spline)
     {
         this.normal_speed = normal_speed;
         current_speed = this.normal_speed;
         this.maxCapturePoint = maxCapturePoint;
         this.captureSpeed = captureSpeed;
         this.uncaptureSpeed = uncaptureSpeed;
+        this.splineObject = spline;
     }
     
     // Update is called once per frame
     void Update()
     {
         MoveAlongSpline();
-
-        if (currentCapturePoint > 0)
+        CaptureUpdate();
+    }
+    
+    private void CaptureUpdate()
+    {
+        if (isBeeingCaptured)
         {
-            if (isBeeingCaptured)
+            currentCapturePoint += Time.deltaTime * captureSpeed;
+            if (currentCapturePoint >= maxCapturePoint && !isCaptured)
             {
-                currentCapturePoint += Time.deltaTime * captureSpeed;
+                isCaptured = true;
+                GameManager.Instance.Capture(this);
+                Destroy(this);
             }
-            else
-            {
-                currentCapturePoint -= Time.deltaTime * uncaptureSpeed;
-            }
-
-            if (currentCapturePoint >= maxCapturePoint)
-            {
-                
-            }
+            _uiCapture.UpdateCaptureBar(CapturePercent());
+            //GameManager.Instance.CaptureUpdate(this);
+        }
+        else if (currentCapturePoint > 0)
+        {
+            currentCapturePoint -= Time.deltaTime * uncaptureSpeed;
+            _uiCapture.UpdateCaptureBar(CapturePercent());
+            //GameManager.Instance.CaptureUpdate(this);
         }
     }
-
     
     private void MoveAlongSpline()
     {
-        
         // Calculate the target position on the spline
         Vector3 targetPosition = splinecontainer.EvaluatePosition(distancePercentage);
 
@@ -107,8 +121,15 @@ public class Curiosity : MonoBehaviour
             Flip();
         }
     }
-    
 
+    private void Flip()
+    {
+        Vector3 currentScale = this.transform.GetChild(0).transform.localScale;
+        currentScale.x *= -1;
+        this.transform.GetChild(0).transform.localScale = currentScale;
+        facingRight = !facingRight;
+    }
+    
     public void OnchangeDirection()
     {
         Debug.Log("we are changing direction");
@@ -137,14 +158,6 @@ public class Curiosity : MonoBehaviour
         current_speed = normal_speed;
     }
 
-    private void Flip()
-    {
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
-        facingRight = !facingRight;
-    }
-
     public void Capture()
     {
         isBeeingCaptured = true;
@@ -157,6 +170,11 @@ public class Curiosity : MonoBehaviour
 
     public float CapturePercent()
     {
-        return (currentCapturePoint/maxCapturePoint) *100;
+        return (currentCapturePoint/maxCapturePoint);
+    }
+
+    public void DestroySpline()
+    {
+        //Destroy(this.splineObject);
     }
 }
