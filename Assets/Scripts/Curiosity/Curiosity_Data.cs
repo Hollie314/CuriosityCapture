@@ -12,6 +12,9 @@ public class Curiosity_Data : ScriptableObject
     public String Curiosity_description { get; private set; }
     
     [field: SerializeField]
+    public Sprite Curiosity_icone { get; private set; }
+    
+    [field: SerializeField]
     public int Apparition_priority { get; private set; }
     
     [field: SerializeField]
