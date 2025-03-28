@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
-  m_Name: Curiosity_Data
+  m_Name: Hat
   m_EditorClassIdentifier: 
-  <Curiosity_name>k__BackingField: a hat
-  <Curiosity_description>k__BackingField: 
+  <Curiosity_name>k__BackingField: Mad Hatter's Hat
+  <Curiosity_description>k__BackingField: 'This peculiar, twisted, and worn top hat
+    is said to belong to the Mad Hatter. It seems to harbor the secrets of forgotten
+    tea parties, moving stealthily and vanishing the moment a ray of light touches
+    it. '
   <Apparition_priority>k__BackingField: 0
   <Spawn_Location_Index>k__BackingField: 0
   <splineObject>k__BackingField: {fileID: 7232155228854673200, guid: fc9aa51bf701ecd4388a0e5e85f7bb14, type: 3}
