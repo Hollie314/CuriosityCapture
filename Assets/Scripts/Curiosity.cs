@@ -13,6 +13,7 @@ public class Curiosity : MonoBehaviour
     private float current_speed;
 
     private GameObject splineObject;
+    private GameObject spline;
     private SplineContainer splinecontainer;
     private bool facingRight;
     private float distancePercentage = 0f;
@@ -30,13 +31,13 @@ public class Curiosity : MonoBehaviour
     public bool isBeeingCaptured = false;
     private bool isCaptured = false;
 
-    [field:SerializeField]private UI_Capture _uiCapture;
+    [field:SerializeField]private UI_CaptureBar _uiCapture;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Instantiate the spline 
-        GameObject spline = Instantiate(this.splineObject,this.transform.parent);
+        spline = Instantiate(this.splineObject,this.transform.parent);
         splinecontainer = spline.GetComponent<SplineContainer>();
         // Teleport to start
         Vector3 startPos = splinecontainer.EvaluatePosition(0);
@@ -176,5 +177,13 @@ public class Curiosity : MonoBehaviour
     public void DestroySpline()
     {
         //Destroy(this.splineObject);
+    }
+    
+    public void DestroythisObject()
+    {
+        Destroy(this);  // Remove script
+        splinecontainer.Spline.Clear();  // Remove spline points
+        Destroy(spline);
+        Destroy(gameObject);
     }
 }

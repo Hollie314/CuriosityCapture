@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50566cab6799c645aa545de9841d484, type: 3}
   m_Name: Curiosity_Data
   m_EditorClassIdentifier: 
-  <Curiosity_name>k__BackingField: 
+  <Curiosity_name>k__BackingField: a hat
   <Curiosity_description>k__BackingField: 
   <Apparition_priority>k__BackingField: 0
   <Spawn_Location_Index>k__BackingField: 0

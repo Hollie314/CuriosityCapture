@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     //curiosities
-    private List<Curiosity_Data> curiositie_datas;
+    private Curiosity_Data[] curiositie_datas;
+    private List<Curiosity_Data> curiosities_leftToCatch;
     private int index_currentCuriosity = 0;
     [SerializeField]private Dictionary<Curiosity,Curiosity_Data > curiosities;
     
     //spawning
-    public event Action<Curiosity_Data> OnCapture;
+    public static event Action<int> OnCapture;
     [SerializeField] GameObject[] spawnLocations;
     
     //player
@@ -34,8 +36,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         //for singleton behavior_end
-        curiositie_datas = new List<Curiosity_Data>();
-        curiositie_datas = GameController.GameDatabase.Curiosity_Data.ToList();
+        curiosities_leftToCatch = new List<Curiosity_Data>();
+        curiositie_datas = GameController.GameDatabase.Curiosity_Data;
+        curiosities_leftToCatch = curiositie_datas.ToList();
     }
     
     // for singleton Ensures it's created automatically if accessed before existing
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateCuriosity()
     {
-        foreach (var curiosity in curiositie_datas)
+        foreach (var curiosity in curiosities_leftToCatch)
         {
             if (curiosity.Apparition_priority == index_currentCuriosity)
             {
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var curiosity in curiosities)
         {
-            curiositie_datas.Remove(curiosity.Value);
+            curiosities_leftToCatch.Remove(curiosity.Value);
         }
     }
 
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         if (curiosities.Count == 0)
         {
-            if (curiositie_datas.Count == 0)
+            if (curiosities_leftToCatch.Count == 0)
             {
                 EndGame();
             }
@@ -130,16 +133,15 @@ public class GameManager : MonoBehaviour
     public void Capture(Curiosity curiosity)
     {
         Debug.Log("it is captured !");
-        Curiosity_Data curiosityData;
-        bool data = curiosities.TryGetValue(curiosity, out curiosityData);
-        if (curiosityData != null)
-        {
-           Debug.Log("yes");
-            capturedCuriosities.Add(curiosityData);
-        }
-        OnCapture?.Invoke(curiosities[curiosity]);
+      
+        int index = Array.IndexOf(curiositie_datas, curiosities[curiosity]);
+        capturedCuriosities.Add(curiosities[curiosity]);
+        OnCapture?.Invoke(index);
+        
         curiosity.gameObject.SetActive(false);
         curiosities.Remove(curiosity);
+
+        curiosity.DestroythisObject();
         NextSpawn();
     }
 }
