@@ -130,8 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("end game");
-        //to implement
+        OnEndGame?.Invoke();
     }
     public void Capture(Curiosity curiosity)
     {

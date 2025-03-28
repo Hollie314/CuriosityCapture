@@ -8,4 +8,9 @@ public class UI_loadingScreeen : MonoBehaviour
     {
         SceneManager.LoadScene("Main_Scene");
     }
+
+    public void QuitTheGame()
+    {
+        Application.Quit();
+    }
 }
