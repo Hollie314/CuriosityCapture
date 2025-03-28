@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lola_scene.unity
     guid: 91d4457cf355c524c84bc5f50af49756
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 06a3af715d115eb4f856d6af4b569240
+  - enabled: 1
+    path: Assets/Scenes/Main_Scene.unity
+    guid: f6b9d2d0f32001247845f813e7b0a860
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
