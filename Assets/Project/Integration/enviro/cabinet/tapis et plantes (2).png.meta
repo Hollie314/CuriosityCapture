@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dec03c1746bdc204d80512490a8dde0f
+guid: 9acae34243e2c4e42abf40c0d8a539a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7951995321485206398
-    second: shakspear_skull_0
+      213: 1667384194029933758
+    second: tapis et plantes (2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shakspear_skull_0
+      name: tapis et plantes (2)_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 50
-        width: 384
-        height: 308
+        x: 335
+        y: 121
+        width: 874
+        height: 437
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e73a1b80d992b5e60800000000000000
-      internalID: 7951995321485206398
+      spriteID: eb4514d171db32710800000000000000
+      internalID: 1667384194029933758
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shakspear_skull_0: 7951995321485206398
+      tapis et plantes (2)_0: 1667384194029933758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

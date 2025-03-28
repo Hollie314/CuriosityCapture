@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dec03c1746bdc204d80512490a8dde0f
+guid: 3c8c66a81cee2b04991164afadf2650a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7951995321485206398
-    second: shakspear_skull_0
+      213: -8043381636773543442
+    second: captured_doggo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shakspear_skull_0
+      name: captured_doggo_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 50
-        width: 384
-        height: 308
+        x: 127
+        y: 47
+        width: 230
+        height: 385
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e73a1b80d992b5e60800000000000000
-      internalID: 7951995321485206398
+      spriteID: ee1863b540b206090800000000000000
+      internalID: -8043381636773543442
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shakspear_skull_0: 7951995321485206398
+      captured_doggo_0: -8043381636773543442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
