@@ -38,5 +38,6 @@ public class UI_Book : MonoBehaviour
     public void ToogleUI()
     {
         book_UI.SetActive(!book_UI.activeSelf);
+        Cursor.visible = !Cursor.visible;
     }
 }
