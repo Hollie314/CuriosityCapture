@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     //for singleton behavior
     public static GameManager Instance { get; private set; }
 
-    public Curiosity_Data[] curiositie_datas;
+    //curiosities
+    private Curiosity_Data[] curiositie_datas;
     private int index_currentCuriosity = 0;
-    
-    [SerializeField] GameObject spawnlocation;
-
     private Dictionary<Curiosity,Curiosity_Data > curiosities;
-    public event Action<int, float> OnCapturUpdate;
-    public event Action<int> OnStopCapturingCuriosity;
+    
+    //spawning
+    public event Action<Curiosity_Data> OnCapture;
+    [SerializeField] GameObject[] spawnLocations;
+    
     
     protected void Awake()
     {
@@ -47,14 +49,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         curiosities = new Dictionary<Curiosity,Curiosity_Data >();
-        
-        foreach (var curiosity in curiositie_datas)
-        {
-            if (curiosity.Apparition_priority == index_currentCuriosity)
-            {
-                curiosities.Add(Instantiate(curiositie_datas[index_currentCuriosity].Avatar.GetComponent<Curiosity>()),curiosity);
-            }
-        }
+        InstantiateCuriosity();
     }
 
     public void Update()
@@ -68,18 +63,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void InstantiateCuriosity()
+    {
+        foreach (var curiosity in curiositie_datas)
+        {
+            if (curiosity.Apparition_priority == index_currentCuriosity)
+            {
+                Curiosity script = Instantiate(curiosity.Avatar.GetComponent<Curiosity>(), spawnLocations[curiosity.Spawn_Location_Index].transform);
+                curiosities.Add(script,curiosity);
+                script.Initialize(curiosity.Speed, curiosity.MaxCapturePoint, curiosity.CaptureSpeed, curiosity.UncaptureSpeed, curiosity.splineObject);
+            }
+        }
+    }
+
     public void CaptureBegin(GameObject creatureGO)
     {
-        creatureGO.GetComponent<Curiosity>().Capture();
+        Curiosity curiosity = creatureGO.GetComponent<Curiosity>();
+        curiosity.Capture();
     }
     
     public void CaptureEnd(GameObject creatureGO)
     {
-        creatureGO.GetComponent<Curiosity>().UnCapture();
+        Curiosity curiosity = creatureGO.GetComponent<Curiosity>();
+        curiosity.UnCapture();
+        foreach (var behavior in  curiosities[curiosity].CaptureBehaviors)
+        {
+            behavior.ResetTime();
+        }
     }
 
-    public void CaptureUpdate(Curiosity curiosity)
+    public void Capture(Curiosity curiosity)
     {
-        OnCapturUpdate?.Invoke(curiosities[curiosity].Apparition_priority, curiosity.CapturePercent());
+        OnCapture?.Invoke(curiosities[curiosity]);;
     }
 }

@@ -15,6 +15,12 @@ public class Curiosity_Data : ScriptableObject
     public int Apparition_priority { get; private set; }
     
     [field: SerializeField]
+    public int Spawn_Location_Index { get; private set; }
+    
+    [field: SerializeField]
+    public GameObject splineObject { get; private set;}
+    
+    [field: SerializeField]
     public float Speed { get; private set;}
     
     [field: SerializeField]

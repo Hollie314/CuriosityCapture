@@ -15,10 +15,12 @@ MonoBehaviour:
   <Curiosity_name>k__BackingField: 
   <Curiosity_description>k__BackingField: 
   <Apparition_priority>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <MaxCapturePoint>k__BackingField: 0
-  <CaptureSpeed>k__BackingField: 0
-  <UncaptureSpeed>k__BackingField: 0
+  <Spawn_Location_Index>k__BackingField: 0
+  <splineObject>k__BackingField: {fileID: 7232155228854673200, guid: fc9aa51bf701ecd4388a0e5e85f7bb14, type: 3}
+  <Speed>k__BackingField: 2
+  <MaxCapturePoint>k__BackingField: 50
+  <CaptureSpeed>k__BackingField: 3
+  <UncaptureSpeed>k__BackingField: 4
   <CaptureBehaviors>k__BackingField:
   - {fileID: 11400000, guid: 4c5fbb58dbad6fa4d9b3039a31dacaa8, type: 2}
-  <Avatar>k__BackingField: {fileID: 3380698253631369519, guid: ea4ea0393e92860428c6387d030bd8a6, type: 3}
+  <Avatar>k__BackingField: {fileID: 8732672663073354428, guid: 54ba3e5d80439e24a9bd2fbf6d89dd3d, type: 3}

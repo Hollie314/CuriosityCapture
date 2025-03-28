@@ -16,7 +16,7 @@ public class ChangeSpeed_Data : Behavior
         if (CurrentTime >= TimeBeforeTriggerBehavior)
         {
             creature.OnSpeedUp(Dash_speed, TimeBeforeResetSpeed);
-            CurrentTime = 0;
+            CurrentTime = -TimeBeforeResetSpeed;
         }
     }
 }
