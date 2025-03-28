@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9acae34243e2c4e42abf40c0d8a539a4
+guid: 29af4a5c56ae5cc41901dcd4c9484d52
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1667384194029933758
-    second: tapis et plantes (2)_0
+      213: 915618257001601225
+    second: tapIS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -77,7 +77,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tapis et plantes (2)_0
+      name: tapIS_0
       rect:
         serializedVersion: 2
         x: 335
         y: 121
-        width: 874
+        width: 868
         height: 437
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb4514d171db32710800000000000000
-      internalID: 1667384194029933758
+      spriteID: 9c8517e14fde4bc00800000000000000
+      internalID: 915618257001601225
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      tapis et plantes (2)_0: 1667384194029933758
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
