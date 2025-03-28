@@ -85,7 +85,7 @@ public class Curiosity : MonoBehaviour
     private void MoveAlongSpline()
     {
         // Calculate the target position on the spline
-            Vector3 targetPosition = splinecontainer.EvaluatePosition(distancePercentage);
+        Vector3 targetPosition = splinecontainer.EvaluatePosition(distancePercentage);
 
         // Move the character towards the target position on the spline
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, current_speed * Time.deltaTime);
