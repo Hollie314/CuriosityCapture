@@ -1,18 +1,23 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI_Capture : MonoBehaviour
 {
-    [field:SerializeField] private Image capture_Bar;
+    
+    [SerializeField] private GameObject[] captured_Curiosities;
 
-    private void Start()
+    private void OnEnable()
     {
-        capture_Bar.fillAmount = 0;
+        GameManager.OnCapture += UpdateCuriosityUI;
+    }
+    
+    private void OnDisable()
+    {
+        GameManager.OnCapture -= UpdateCuriosityUI;
     }
 
-    public void UpdateCaptureBar(float capture_percent)
+    public void UpdateCuriosityUI(int index)
     {
-        capture_Bar.fillAmount = capture_percent;
+        captured_Curiosities[index].SetActive(true);
     }
 }

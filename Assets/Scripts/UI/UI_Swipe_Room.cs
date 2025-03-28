@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Swipe_Room : MonoBehaviour
+public class UI_Swipe_Room : MonoBehaviour
 {
 
     [SerializeField] private GameObject rooms;
